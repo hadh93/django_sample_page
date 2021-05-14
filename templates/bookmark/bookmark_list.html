@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>D.LAB X Django</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        html {
+            background: url("https://cdn.pixabay.com/photo/2015/06/08/15/11/typewriter-801921_960_720.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        h1 {
+
+            position: absolute;
+            font-family: 'Parisienne', cursive;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: black;
+            font-size: 50px;
+        }
+        .container1{
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #content li {
+            position: relative;
+            list-style-type: none;
+            font-family: 'Roboto Mono', monospace;
+            color: black;
+            font-size: 35px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header" style="text-align: center">
+                <a href="{% url 'index' %}">
+                    <img class = "navbar-brand" src="../../media/dlab_logo_white.png">
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'admin:index' %}">ADMIN</a></li>
+                <li><a href="{% url 'bookmark_index' %}">BOOKMARK</a></li>
+                <li><a href="{% url 'blog_index' %}">BLOG</a></li>
+            </ul>
+
+            {% if user.is_active %}
+
+            <div class = "navbar-nav" style="padding-top: 10px;">
+                <a href="{% url 'logout' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Sign Out</button>
+                </a>
+                <a href="{% url 'password_change' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Change Password</button>
+                </a>
+            </div>
+            <p class="navbar-text">디랩의 자랑, {{ user.get_username }}님을 환영합니다.</p>
+
+            {% else %}
+
+            <div class = "navbar-nav" style="padding-top: 10px;">
+                <a href="{% url 'register' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Sign Up</button>
+                </a>
+                <a href="{% url 'login' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Login</button>
+                </a>
+            </div>
+            <p class="navbar-text">some text</p>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div id = "content">
+        <h1>Bookmark List</h1>
+        <div class="container1">
+            <ul>
+                {% for bookmark in object_list %}
+                <li><a href="{% url 'detail' bookmark.id %}">{{ bookmark }}</a></li><br>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

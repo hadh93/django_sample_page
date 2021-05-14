@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        html {
+            background: url(../../../media/frame.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        h1 {
+
+            position: absolute;
+            font-family: 'Bebas Neue', cursive;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: black;
+            font-size: 50px;
+        }
+        .container{
+            position: absolute;
+            top: 60%;
+            left: 48%;
+            transform: translate(-50%, -50%);
+        }
+
+        li {
+            position: relative;
+            list-style-type: none;
+            font-family: 'Roboto Mono', monospace;
+            color: black;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>{{ object.title }}</h1>
+    <div class="container">
+        <ul>
+            <li>URL: {{object.url}}</li>
+            <li>Create Date: {{ object.create_date }}</li>
+        </ul>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <style>
+        #content{
+            text-align: center;
+            font-size: 30px;
+            font-family: 'Do Hyeon', sans-serif;
+            width: 900px;
+            height: 900px;
+            margin: auto;
+        }
+        ul{
+            list-style:none;
+
+        }
+        li{
+            width: 900px;
+            margin: auto;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        #title{
+            font-family: 'Do Hyeon', sans-serif;
+            font-size: 100px;
+            color: red;
+        }
+        .small{
+            font-size: 20px;
+            color: gray;
+        }
+        a{
+            text-decoration: none;
+            color: dimgray;
+        }
+        li:hover{
+            background-color: rgba(255,20,147,0.1);
+        }
+        iframe{
+            width: 900px;
+            height: 506px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="content">
+
+    <h1 id="title">{{ object.title }}</h1>
+
+    <ul>
+        <li>URL: <a href="{{ object.url }}">{{ object.url }}</a></li>
+        <li>Create Date: {{ object.create_date }}</li>
+    </ul>
+    <iframe src="{{object.url}}"></iframe>
+
+
+</div>
+
+
+</body>
+</html>

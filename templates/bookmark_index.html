@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+</head>
+<style>
+</style>
+<body>
+
+
+<br>
+<div class="container p-3 my-3 bg-dark text-white">
+    <h1>Bookmark App Options:</h1>
+</div>
+
+<br><br><br>
+<div class = "row">
+    <div class="col-sm-6 left">
+      <div class="thumbnail">
+        <a href="{% url 'bookmark_regular_index' %}"><img src="https://cdn.pixabay.com/photo/2015/06/08/15/11/typewriter-801921_960_720.jpg" alt="Regular Bookmark"></a>
+        <h2>북마크 앱</h2>
+        <h5>브라우저의 즐겨찾기/북마크 기능과 동일합니다.</h5>
+      </div>
+    </div>
+
+    <div class="col-sm-6 right">
+      <div class="thumbnail">
+        <a href="{% url 'bookmarkYoutube_index' %}"><img src="../../media/youtube-2617510_1920.jpg" alt="Youtube Bookmark"></a>
+        <h2>유튜브 북마크 앱</h2>
+        <h5>내가 좋아하는 유튜브 동영상들을 저장하고 재생하는 웹페이지입니다.</h5>
+      </div>
+    </div>
+
+</body>
+</html>

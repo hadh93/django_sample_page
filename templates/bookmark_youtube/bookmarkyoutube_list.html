@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <style>
+        #content{
+            text-align: center;
+            font-size: 30px;
+            font-family: 'Do Hyeon', sans-serif;
+            width: 900px;
+            height: 900px;
+            margin: auto;
+        }
+        ul{
+            list-style:none;
+
+        }
+        #content li{
+            width: 500px;
+            margin: auto;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        #title{
+            font-family: 'Do Hyeon', sans-serif;
+            font-size: 100px;
+            color: red;
+        }
+        .small{
+            font-size: 20px;
+            color: gray;
+        }
+        a{
+            text-decoration: none;
+            color: dimgray;
+        }
+        #content li:hover{
+            background-color: rgba(255,20,147,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header" style="text-align: center">
+                <a href="{% url 'index' %}">
+                    <img class = "navbar-brand" src="../../media/dlab_logo_white.png">
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'admin:index' %}">ADMIN</a></li>
+                <li><a href="{% url 'bookmark_index' %}">BOOKMARK</a></li>
+                <li><a href="{% url 'blog_index' %}">BLOG</a></li>
+            </ul>
+
+            {% if user.is_active %}
+
+            <div class = "navbar-nav" style="padding-top: 10px;">
+                <a href="{% url 'logout' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Sign Out</button>
+                </a>
+                <a href="{% url 'password_change' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Change Password</button>
+                </a>
+            </div>
+            <p class="navbar-text">디랩의 자랑, {{ user.get_username }}님을 환영합니다.</p>
+
+            {% else %}
+
+            <div class = "navbar-nav" style="padding-top: 10px;">
+                <a href="{% url 'register' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Sign Up</button>
+                </a>
+                <a href="{% url 'login' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Login</button>
+                </a>
+            </div>
+            <p class="navbar-text">some text</p>
+            {% endif %}
+        </div>
+    </nav>
+
+
+    <br><br><br>
+
+    <div id = "content">
+        <h1 id = "title">
+            최<span class = "small">고로</span>
+            애<span class = "small">정하는</span>
+            유<span class = "small">튜브</span></h1>
+        <br>
+
+        <ul>
+
+            {% for bookmarkYoutube in object_list %}
+            <li><a href="{% url 'bookmarkYoutube_detail' bookmarkYoutube.id %}">{{bookmarkYoutube}}</a></li>
+            {% endfor %}
+
+        </ul>
+    </div>
+
+
+</body>
+</html>

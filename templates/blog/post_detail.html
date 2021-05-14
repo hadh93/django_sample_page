@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <title>Post List</title>
+    <script>
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://dm402samplepage.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    {% load static %}
+    <style>
+        .logo {
+            flex: 1;
+        }
+        .functionTexts{
+            color: lightgrey;
+
+        }
+    </style>
+</head>
+<body>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header" style="text-align: center">
+                <a href="{% url 'index' %}">
+                    <img class = "navbar-brand" src="../../media/dlab_logo_white.png">
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'admin:index' %}">ADMIN</a></li>
+                <li><a href="{% url 'bookmark_index' %}">BOOKMARK</a></li>
+                <li><a href="{% url 'blog_index' %}">BLOG</a></li>
+            </ul>
+
+            {% if user.is_active %}
+
+            <div class = "navbar-nav" style="padding-top: 10px;">
+                <a href="{% url 'logout' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Sign Out</button>
+                </a>
+                <a href="{% url 'password_change' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Change Password</button>
+                </a>
+            </div>
+            <p class="navbar-text">디랩의 자랑, {{ user.get_username }}님을 환영합니다.</p>
+
+            {% else %}
+
+            <div class = "navbar-nav" style="padding-top: 10px;">
+                <a href="{% url 'register' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Sign Up</button>
+                </a>
+                <a href="{% url 'login' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Login</button>
+                </a>
+            </div>
+            <p class="navbar-text">some text</p>
+            {% endif %}
+        </div>
+    </nav>
+
+<br><br>
+    <div class="row">
+        <div class = "col-sm-2"></div>
+        <div class = "col-sm-8 logo">
+
+            <div>
+                <img src = "../../media/logo.jpg">
+            </div>
+             <div class="thumbnail">
+                 <h5>{{ object.title }}</h5>
+                 <img src = "{{ object.image.url }}">
+                 <p>{{ object.description }}</p>
+                 <p class="functionTexts">Post Created: {{object.create_date}}</p>
+                 <p class="functionTexts">Last modified: {{object.modify_date}}</p>
+                 <div id="disqus_thread"></div>
+            </div>
+        </div>
+        <div class = "col-sm-2"></div>
+    </div>
+
+</body>
+</html>

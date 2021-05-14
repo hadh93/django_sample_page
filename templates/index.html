@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>D.LAB X Django</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+
+        <style>
+            .d1{
+                position: relative;
+            }
+
+            #container{
+                position: absolute;
+                justify-content: center;
+                align-items: center;
+                width: 1000px;
+            }
+
+            .main_title{
+                font-family: 'Lato', sans-serif;
+                font-size: 35px;
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                transform: translate(-50%, 0%);
+                font-size: 60px;
+                color: #ffffff;
+                background: #696969;
+                animation-name: riseTextEffect;
+                animation-duration: 3s;
+                animation-delay: 0.01s;
+            }
+            .refcontainer{
+                position: absolute;
+                color: #696969;
+                top: 100%;
+                left: 82%;
+            }
+
+            .logodisplay{
+                position: absolute;
+                left: 50%;
+                top: 25%;
+                opacity: 0.5;
+            }
+
+            .ref{
+                position: relative;
+            }
+
+            @keyframes riseTextEffect {
+                0%   {opacity: 1.0; left: 50%; top: 10%;}
+                25%   {opacity: 0.1; left: 50%; top: 16%;}
+                50%   {opacity: 0.3; left: 50%; top: 14%;}
+                75%   {opacity: 0.5; left: 50%; top: 12%;}
+                100%   {opacity: 0.7; left: 50%; top: 10%;}
+            }
+
+            #author {
+                position: absolute;
+                font-family: 'Parisienne', cursive;
+                top: 20%;
+                left: 60%;
+                transform: translate(-50%, 0%);
+                color: black;
+                font-size: 25px;
+            }
+
+
+            .feature-list .caption {
+                position: absolute;
+                width: 20%;
+                height: 200px;
+                padding-top: 20px;
+                background: rgba(0,0,0,0.6);
+                opacity: 0;
+                -moz-transition: all 0.2s ease-in-out;
+                -o-transition: all 0.2s ease-in-out;
+                -webkit-transition: all 0.2s ease-in-out;
+                transition: all 0.2s ease-in-out;
+                z-index: 10;
+            }
+
+            .feature-list .caption h1, .feature-list .caption p {
+                color: #fff;
+                text-align: center;
+            }
+
+            .feature-list .feature:hover .caption {
+                opacity: 1;
+                -moz-transform: translateY(-200px);
+                -ms-transform: translateY(-200px);
+                -o-transform: translateY(-200px);
+                -webkit-transform: translateY(-200px);
+                transform: translateY(-200px);
+            }
+
+            #container {
+                position: absolute;
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 45%;
+                width: 80%;
+                height: 200px;
+            }
+
+            #container img {
+                margin-left: 50px;
+                opacity: 0.7;
+                width: 200px;
+                height: 200px;
+                filter: invert(100%);
+                background-color: white;
+                background-blend-mode: multiply;
+                border-radius: 15px;
+            }
+
+            #features {
+                display: flex;
+            }
+            .feature {
+                flex: 1;
+                width: 20%;
+                height: 200px;
+            }
+
+        </style>
+    </head>
+    <body style=
+    "background-color: transparent;">
+
+
+        <div class = "d1">
+            <iframe width="100%" height="1060"
+                src="https://www.youtube.com/embed/mkgylOJSdhE?vq=hd720&autoplay=1&mute=1&start=22&controls=0&wmode=opaque" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; modestbranding; gyroscope; picture-in-picture"
+                >
+            </iframe>
+            <h1 class="main_title">DJANGO SAMPLE PAGE</h1>
+            <h1 id = "author">@Thomas Ha</h1>
+        </div>
+
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header" style="text-align: center">
+                    <a href="{% url 'index' %}">
+                        <img class = "navbar-brand" src="../media/dlab_logo_white.png">
+                    </a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'admin:index' %}">ADMIN</a></li>
+                    <li><a href="{% url 'bookmark_index' %}">BOOKMARK</a></li>
+                    <li><a href="{% url 'blog_index' %}">BLOG</a></li>
+                </ul>
+
+                {% if user.is_active %}
+
+                <div class = "navbar-nav" style="padding-top: 10px;">
+                    <a href="{% url 'logout' %}">
+                        <button class="btn btn-sm btn-outline-secondary" type="button">Sign Out</button>
+                    </a>
+                    <a href="{% url 'password_change' %}">
+                        <button class="btn btn-sm btn-outline-secondary" type="button">Change Password</button>
+                    </a>
+                </div>
+                <p class="navbar-text">디랩의 자랑, {{ user.get_username }}님을 환영합니다.</p>
+
+                {% else %}
+
+                <div class = "navbar-nav" style="padding-top: 10px;">
+                    <a href="{% url 'register' %}">
+                        <button class="btn btn-sm btn-outline-secondary" type="button">Sign Up</button>
+                    </a>
+                    <a href="{% url 'login' %}">
+                        <button class="btn btn-sm btn-outline-secondary" type="button">Login</button>
+                    </a>
+                </div>
+                <p class="navbar-text">로그인해주세요.</p>
+                {% endif %}
+            </div>
+        </nav>
+
+        <div id ="container" class = "feature-list">
+            <div id = "features">
+                <div id = "feature1" class = "feature">
+                    <a href="{% url 'admin:index' %}">
+                    <img src = "../media/unauthorized-person.png">
+                    <div class = "caption">
+                        <h1>관리자 기능</h1>
+                        <p>Django에서는 손쉽게 최고관리자계정(superuser)생성이 가능하며, 관리자 기능(admin)이 지원됩니다.</p>
+                        <p>클릭하여 확인해보세요.</p>
+                    </div>
+                    </a>
+                </div>
+
+                <div id = "feature2" class = "feature">
+                    <a href="{% url 'bookmark_index' %}">
+                    <img src = "../media/list.png">
+                    <div class = "caption">
+                        <h1>북마크 기능</h1>
+                        <p>리스트뷰와 디테일뷰를 이용하여 간단한 북마크 앱을 만들 수 있습니다.</p>
+                        <p>클릭하여 확인해보세요.</p>
+                    </div>
+                    </a>
+                </div>
+
+                <div id = "feature3" class = "feature">
+                    <a href="{% url 'blog_index' %}">
+                    <img src = "../media/article.png">
+                    <div class = "caption">
+                        <h1>블로그 기능</h1>
+                        <p>리스트뷰와 디테일뷰를 사용하여 (인☆그램 같은) 블로그 페이지를 만들 수 있습니다. </p>
+                        <p>클릭하여 확인해보세요.</p>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class = "refcontainer">
+            <div class = "ref">Icons made by <a href="https://www.flaticon.com/authors/srip" title="srip">srip</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <div class = "ref">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <div class = "ref">Icons made by <a href="https://www.flaticon.com/authors/prettycons" title="prettycons">prettycons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        </div>
+
+    </body>
+</html>
