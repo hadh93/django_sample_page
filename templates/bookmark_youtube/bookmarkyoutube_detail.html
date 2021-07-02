@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>D.LAB X Django</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <style>
         #content{
@@ -13,12 +14,13 @@
             width: 900px;
             height: 900px;
             margin: auto;
+            margin-top:100px;
         }
-        ul{
+        #innerList{
             list-style:none;
 
         }
-        li{
+        #innerList li{
             width: 900px;
             margin: auto;
             margin-bottom: 30px;
@@ -48,11 +50,51 @@
 </head>
 <body>
 
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header" style="text-align: center">
+                <a href="{% url 'index' %}">
+                    <img class = "navbar-brand" src="../../../media/dlab_logo_white.png">
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'admin:index' %}">ADMIN</a></li>
+                <li><a href="{% url 'bookmark_index' %}">BOOKMARK</a></li>
+                <li><a href="{% url 'blog_index' %}">BLOG</a></li>
+            </ul>
+
+            {% if user.is_active %}
+
+            <div class = "navbar-nav" style="padding-top: 10px;">
+                <a href="{% url 'logout' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Sign Out</button>
+                </a>
+                <a href="{% url 'password_change' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Change Password</button>
+                </a>
+            </div>
+            <p class="navbar-text">디랩의 자랑, {{ user.get_username }}님을 환영합니다.</p>
+
+            {% else %}
+
+            <div class = "navbar-nav" style="padding-top: 10px;">
+                <a href="{% url 'register' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Sign Up</button>
+                </a>
+                <a href="{% url 'login' %}">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">Login</button>
+                </a>
+            </div>
+            <p class="navbar-text">로그인 해주세요.</p>
+            {% endif %}
+        </div>
+    </nav>
+
 <div id="content">
 
     <h1 id="title">{{ object.title }}</h1>
 
-    <ul>
+    <ul id = "innerList">
         <li>URL: <a href="{{ object.url }}">{{ object.url }}</a></li>
         <li>Create Date: {{ object.create_date }}</li>
     </ul>

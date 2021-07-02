@@ -18,7 +18,7 @@ from django.urls import path, include
 from mysite.views import IndexView, UserCreateView, UserCreateDoneTV
 
 from bookmark.views import BookmarkLV, BookmarkDV
-from bookmark_youtube.views import BookmarkYoutubeLV, BookmarkYoutubeDV
+from bookmark_youtube.views import BookmarkYoutubeLV, BookmarkYoutubeDV, BookmarkYoutubeCV
 from blog.views import PostLV, PostDV, PostCV
 from bookmarkIndex.views import BookmarkIndexView
 
@@ -36,8 +36,11 @@ urlpatterns = [
     path('bookmark/', BookmarkIndexView.as_view(), name='bookmark_index'),
     path('bookmark/regular/', BookmarkLV.as_view(), name='bookmark_regular_index'),
     path('bookmark/regular/<int:pk>/', BookmarkDV.as_view(), name = 'detail'),
+
     path('bookmark/youtube/', BookmarkYoutubeLV.as_view(), name = 'bookmarkYoutube_index'),
     path('bookmark/youtube/<int:pk>/', BookmarkYoutubeDV.as_view(), name = 'bookmarkYoutube_detail'),
+    path('bookmark/youtube/add/', BookmarkYoutubeCV.as_view(), name="bookmarkYoutube_add"),
+
     path('blog/', PostLV.as_view(), name='blog_index'),
     path('blog/<int:pk>/', PostDV.as_view(), name='blog_detail'),
     path('blog/add/', PostCV.as_view(), name="blog_add"),

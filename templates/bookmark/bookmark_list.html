@@ -21,11 +21,23 @@
 
             position: absolute;
             font-family: 'Parisienne', cursive;
-            top: 35%;
+            top: 30%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: black;
             font-size: 50px;
+        }
+        a:link {
+            color: black;
+            text-decoration: none;
+        }
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }
+        a:hover {
+            color: blue;
+            text-decoration: underline;
         }
         .container1{
             position: absolute;
@@ -39,7 +51,7 @@
             list-style-type: none;
             font-family: 'Roboto Mono', monospace;
             color: black;
-            font-size: 35px;
+            font-size: 25px;
             text-decoration: none;
         }
     </style>
@@ -81,7 +93,7 @@
                     <button class="btn btn-sm btn-outline-secondary" type="button">Login</button>
                 </a>
             </div>
-            <p class="navbar-text">some text</p>
+            <p class="navbar-text">로그인 해주세요.</p>
             {% endif %}
         </div>
     </nav>

@@ -14,19 +14,22 @@
 
         }
         #id_title{
-            width: 90%;
-            border: none;
-            border-bottom: 2px solid navy;
+        width: 80%;
+        border: none;
+        border-bottom: 2px solid navy;
         }
-        #id_description{
-            width: 90%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
+        #id_description, #id_url{
+        width: 80%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
         }
         .formCard{
             padding: 12px 20px;
-            margin: 8px 0;
+            margin: 100px 0;
+        }
+        .codeHighlight{
+            color: #E01E5A;
         }
 
     </style>
@@ -54,7 +57,7 @@
     <div class="container-fluid">
         <div class="navbar-header" style="text-align: center">
             <a href="{% url 'index' %}">
-                <img class="navbar-brand" src="../../media/dlab_logo_white.png">
+                <img class="navbar-brand" src="../../../media/dlab_logo_white.png">
             </a>
         </div>
         <ul class="nav navbar-nav">
@@ -96,12 +99,9 @@
     <div class="col-sm-2"></div>
     <div class="col-sm-8 logo">
 
-        <div>
-            <img src="../../media/logo.jpg">
-        </div>
+
         <div class="thumbnail formCard">
-            <h3>블로그에 새로운 게시글을 올립니다.</h4>
-            <br>
+            <h4>새로운 유튜브 북마크를 추가합니다.</h4>
             <p>아래 정보를 정확하게 입력해주세요.</p>
             <br><br>
 
@@ -109,16 +109,23 @@
                 {% csrf_token %}
 
                 <fieldset class="aligned">
+                    <br>
                     <div class="form-group">
                         제목: {{ form.title }}
                     </div>
                     <br>
                     <div class="form-group">
-                        {{ form.image }}
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        설명: {{ form.description }}
+                        주소(URL): <br>
+                        - 반드시 /embed/형태로 입력하세요.<br>
+                        <div class="well">
+                            예)<br>
+                            <span class = "codeHighlight">
+                                https://www.youtube.com/watch?v=oRzwQrpaA9Q<br>
+                                -> https://www.youtube.com<b>/embed/</b>oRzwQrpaA9Q
+                            </span>
+                        </div>
+                        <br>
+                        {{ form.url }}
                     </div>
                     <br>
                     <button class="btn btn-primary" type="submit">업로드</button>

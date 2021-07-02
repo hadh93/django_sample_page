@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-        <title>Post List</title>
+    <title>D.LAB X Django</title>
     <script>
         (function() { // DON'T EDIT BELOW THIS LINE
         var d = document, s = d.createElement('script');
@@ -60,7 +60,7 @@
                     <button class="btn btn-sm btn-outline-secondary" type="button">Login</button>
                 </a>
             </div>
-            <p class="navbar-text">some text</p>
+            <p class="navbar-text">로그인 해주세요.</p>
             {% endif %}
         </div>
     </nav>
@@ -75,9 +75,13 @@
             </div>
              <div class="thumbnail">
                  <h5>{{ object.title }}</h5>
-                 <img src = "{{ object.image.url }}">
+                 {% if object.image.url != null %}
+                    <img src = "{{ object.image.url }}" onerror="this.onerror=null; this.src='../../media/imageerror.png'">
+                 {% else %}
+                    <img src  ="../../media/imageerror.png">
+                 {% endif %}
                  <p>{{ object.description }}</p>
-                 <p class="functionTexts">Post Created: {{object.create_date}}</p>
+                 <p class="functionTexts">Post created: {{object.create_date}}</p>
                  <p class="functionTexts">Last modified: {{object.modify_date}}</p>
                  <div id="disqus_thread"></div>
             </div>

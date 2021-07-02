@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>D.LAB X Django</title>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
@@ -28,6 +28,18 @@
             color: black;
             font-size: 50px;
         }
+        a:link {
+            color: black;
+            text-decoration: none;
+        }
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }
+        a:hover {
+            color: blue;
+            text-decoration: underline;
+        }
         .container{
             position: absolute;
             top: 60%;
@@ -42,6 +54,9 @@
             color: black;
             font-size: 18px;
         }
+        #returnButton {
+            text-align:center;
+        }
     </style>
 </head>
 <body>
@@ -49,8 +64,10 @@
     <h1>{{ object.title }}</h1>
     <div class="container">
         <ul>
-            <li>URL: {{object.url}}</li>
-            <li>Create Date: {{ object.create_date }}</li>
+            <li>URL: <a href = "{{object.url}}">{{object.url}}</a></li>
+            <li>Date created: {{ object.create_date }}</li>
+            <br>
+            <li id="returnButton"><a href="{% url 'index' %}">Home</a></href></li>
         </ul>
     </div>
 

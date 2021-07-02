@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>D.LAB X Django</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
@@ -80,7 +80,7 @@
                     <button class="btn btn-sm btn-outline-secondary" type="button">Login</button>
                 </a>
             </div>
-            <p class="navbar-text">some text</p>
+            <p class="navbar-text">로그인 해주세요.</p>
             {% endif %}
         </div>
     </nav>
@@ -94,6 +94,13 @@
             애<span class = "small">정하는</span>
             유<span class = "small">튜브</span></h1>
         <br>
+        <div>
+            <a href="{% url 'bookmarkYoutube_add' %}">
+                <img src="../../media/upload.png" style="width:10%; height:auto">
+            </a>
+
+        </div>
+        <br>
 
         <ul>
 
@@ -103,6 +110,7 @@
 
         </ul>
     </div>
+    <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 
 </body>
