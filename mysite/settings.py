@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-u=9#e*c_beolwbzp=)3^)6ulb_mo1p71fgi17d0q7&8u+&**5(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.pythonanywhere.com']
+ALLOWED_HOSTS = ['.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'bookmark.apps.BookmarkConfig',
     'bookmark_youtube.apps.BookmarkYoutubeConfig',
     'blog.apps.BlogConfig',
+    'django_unused_media',
+    'django_cleanup.apps.CleanupConfig',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +82,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
     }
 }
 

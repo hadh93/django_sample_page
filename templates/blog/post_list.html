@@ -69,6 +69,17 @@
         </div>
         {% for post in object_list reversed %}
          <div class="thumbnail">
+            {% if request.user == post.author %}
+            <a href = "{% url 'blog_update' post.id %}">
+                <button type="button" class="btn btn-info">수정</button>
+            </a>
+            <a href = "{% url 'blog_delete' post.id %}">
+                <button type="button" class="btn btn-danger">삭제</button>
+            </a>
+
+            {% endif %}
+
+
             <h5>{{ post.title }}</h5>
              <a href="{% url 'blog_detail' post.id %}">
                  {% if post.image.url != null %}
@@ -77,6 +88,9 @@
                     <img src  ="../media/imageerror.png">
                  {% endif %}
              </a>
+
+
+
             <p>{{ post.description }}</p>
         </div>
         {% endfor %}
@@ -85,4 +99,5 @@
 
 
 </body>
+
 </html>

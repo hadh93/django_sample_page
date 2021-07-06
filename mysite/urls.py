@@ -19,7 +19,7 @@ from mysite.views import IndexView, UserCreateView, UserCreateDoneTV
 
 from bookmark.views import BookmarkLV, BookmarkDV
 from bookmark_youtube.views import BookmarkYoutubeLV, BookmarkYoutubeDV, BookmarkYoutubeCV
-from blog.views import PostLV, PostDV, PostCV
+from blog.views import PostLV, PostDV, PostCV, PostUpdateView, PostDeleteView
 from bookmarkIndex.views import BookmarkIndexView
 
 from django.conf.urls.static import static
@@ -44,6 +44,8 @@ urlpatterns = [
     path('blog/', PostLV.as_view(), name='blog_index'),
     path('blog/<int:pk>/', PostDV.as_view(), name='blog_detail'),
     path('blog/add/', PostCV.as_view(), name="blog_add"),
+    path('blog/<int:pk>/update/', PostUpdateView.as_view(), name = "blog_update"),
+    path('blog/<int:pk>/delete/', PostDeleteView.as_view(), name = "blog_delete"),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
