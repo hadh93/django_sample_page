@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>D.LAB X Django</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
@@ -14,6 +15,10 @@
             width: 900px;
             height: 900px;
             margin: auto;
+        }
+        #content .add-button {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size:12px;
         }
         ul{
             list-style:none;
@@ -95,8 +100,8 @@
             유<span class = "small">튜브</span></h1>
         <br>
         <div>
-            <a href="{% url 'bookmarkYoutube_add' %}">
-                <img src="../../media/upload.png" style="width:10%; height:auto">
+            <a class="add-button" href="{% url 'bookmarkYoutube_add' %}">
+                <button class="w3-button w3-xlarge w3-circle w3-dark-gray w3-hover-light-gray">+</button>
             </a>
 
         </div>

@@ -7,7 +7,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     image = models.ImageField(blank=True)
     description = models.CharField('Description',
-                                   max_length=100, blank=True,
+                                   max_length=1000, blank=True,
                                    help_text='simple description')
     create_date = models.DateTimeField('Date Created', auto_now_add=True,
                                        blank=True, null=True)
