@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
+import corona.views
 from mysite.views import IndexView, UserCreateView, UserCreateDoneTV
 
 from bookmark.views import BookmarkLV, BookmarkDV
@@ -46,6 +48,8 @@ urlpatterns = [
     path('blog/add/', PostCV.as_view(), name="blog_add"),
     path('blog/<int:pk>/update/', PostUpdateView.as_view(), name = "blog_update"),
     path('blog/<int:pk>/delete/', PostDeleteView.as_view(), name = "blog_delete"),
+
+    path('corona/', corona.views.index, name="corona_index" ),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

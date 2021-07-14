@@ -40,7 +40,7 @@
                 position: absolute;
                 color: #696969;
                 top: 100%;
-                left: 82%;
+                left: 78%;
             }
 
             .logodisplay{
@@ -73,9 +73,11 @@
             }
 
 
+
             .feature-list .caption {
-                position: absolute;
-                width: 20%;
+
+
+
                 height: 200px;
                 padding-top: 20px;
                 background: rgba(0,0,0,0.6);
@@ -129,6 +131,12 @@
                 width: 20%;
                 height: 200px;
             }
+            .caption {
+              position: relative;
+              width: 100%;
+              height: 200px;
+            }
+
 
         </style>
     </head>
@@ -159,6 +167,7 @@
                     <li><a href="{% url 'admin:index' %}">ADMIN</a></li>
                     <li><a href="{% url 'bookmark_index' %}">BOOKMARK</a></li>
                     <li><a href="{% url 'blog_index' %}">BLOG</a></li>
+                    <li><a href="{% url 'corona_index' %}">COVID</a></li>
                 </ul>
 
                 {% if user.is_active %}
@@ -222,6 +231,18 @@
                     </div>
                     </a>
                 </div>
+
+                <div id = "feature4" class = "feature">
+                    <a href="{% url 'corona_index' %}">
+                    <img src = "../media/covid-19.png">
+                    <div class = "caption">
+                        <h1>코로나 현황판</h1>
+                        <p>Open API와 웹 크롤링 기술을 활용하여 코로나 현황판 같은 사이트를 만들 수 있습니다. </p>
+                        <p>클릭하여 확인해보세요.</p>
+                    </div>
+                    </a>
+                </div>
+
             </div>
         </div>
 
@@ -230,6 +251,7 @@
             <div class = "ref">Icons made by <a href="https://www.flaticon.com/authors/srip" title="srip">srip</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
             <div class = "ref">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
             <div class = "ref">Icons made by <a href="https://www.flaticon.com/authors/prettycons" title="prettycons">prettycons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <div class = "ref">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
         </div>
 
     </body>
