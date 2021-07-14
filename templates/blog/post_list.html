@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>D.LAB X Django</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
     {% load static %}
     <style>
         .logo {
             flex: 1;
+        }
+        .add-button{
+
         }
     </style>
 </head>
@@ -24,6 +29,7 @@
                 <li><a href="{% url 'admin:index' %}">ADMIN</a></li>
                 <li><a href="{% url 'bookmark_index' %}">BOOKMARK</a></li>
                 <li><a href="{% url 'blog_index' %}">BLOG</a></li>
+                <li><a href="{% url 'corona_index' %}">COVID</a></li>
             </ul>
 
             {% if user.is_active %}
@@ -62,25 +68,28 @@
             <img src = "../media/logo.jpg">
             <br>
             <a href="{% url 'blog_add' %}">
-                <button type="button" class="btn btn-info">Add a new post</button>
+                <button class="add-button w3-button w3-medium w3-circle w3-dark-gray w3-hover-light-gray">+</button>
             </a>
             <br>
             <br>
         </div>
         {% for post in object_list reversed %}
          <div class="thumbnail">
-            {% if request.user == post.author %}
-            <a href = "{% url 'blog_update' post.id %}">
-                <button type="button" class="btn btn-info">수정</button>
-            </a>
-            <a href = "{% url 'blog_delete' post.id %}">
-                <button type="button" class="btn btn-danger">삭제</button>
-            </a>
+
+        {% if request.user == post.author %}
+             <div align="right" style="position:absolute;   right: 20px;">
+                <div class="w3-dropdown-hover" style="background-color: Transparent;">
+                    <button class="w3-button w3-circle w3-hover-light-gray" style="opacity: 0.33;">...</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-border">
+                      <a href="{% url 'blog_update' post.id %}" class="w3-bar-item w3-button">수정</a>
+                      <a href="{% url 'blog_delete' post.id %}" class="w3-bar-item w3-button">삭제</a>
+                    </div>
+                </div>
+             </div>
 
             {% endif %}
+             <h5>{{ post.title }}</h5>
 
-
-            <h5>{{ post.title }}</h5>
              <a href="{% url 'blog_detail' post.id %}">
                  {% if post.image.url != null %}
                     <img src = "{{ post.image.url }}" onerror="this.onerror=null; this.src='../media/imageerror.png'">

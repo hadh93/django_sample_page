@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_unused_media',
     'django_cleanup.apps.CleanupConfig',
     'widget_tweaks',
+    'corona.apps.CoronaConfig',
 ]
 
 MIDDLEWARE = [
