@@ -5,7 +5,7 @@
 
 - A simple web page that supports Bookmark features for web addresses and youtube clips
 - Django CRUD actions
-- COVID-19 stat page: Uses data collected from web scraping and public API
+- COVID-19 stat page: Uses data collected from web scraping (BeautifulSoup) and public API
 - Disqus comment service applied
 
 
